@@ -8,7 +8,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
- //ÇÊ¿äÇÑ Çì´õÆÄÀÏ Ãß°¡ 
+ //í•„ìš”í•œ í—¤ë”íŒŒì¼ ì¶”ê°€ 
 typedef struct Node {
 	int key;
 	struct Node* link;
@@ -19,7 +19,7 @@ typedef struct Head {
 }headNode;
 
 
-//ÇÔ¼ö ¸®½ºÆ®
+//í•¨ìˆ˜ ë¦¬ìŠ¤íŠ¸
 headNode* initialize(headNode* h);
 int freeList(headNode* h);
 
@@ -41,7 +41,7 @@ int main()
 	int key;
 	headNode* headnode = NULL;
 
-	printf(" 2019038079 ¹Ú¼Ò¿¬ \n");
+	printf(" 2019038079 ë°•ì†Œì—° \n");
 	do {
 		printf("----------------------------------------------------------------\n");
 		printf("                     Singly Linked List                         \n");
@@ -107,19 +107,19 @@ int main()
 
 headNode* initialize(headNode* h) {
 
-	//headnode°¡ nullÀÌ ¾Æ´Ï¸é freenode¸¦ È£ÃâÇÏ¿© ÇÒ´çµÈ ¸Þ¸ð¸® ¸ðµÎ ÇØÁ¦
+	//headnodeê°€ nullì´ ì•„ë‹ˆë©´ freenodeë¥¼ í˜¸ì¶œí•˜ì—¬ í• ë‹¹ëœ ë©”ëª¨ë¦¬ ëª¨ë‘ í•´ì œ
 	if (h != NULL)
 		freeList(h);
 
-	//headnode¿¡ ´ëÇÑ ¸Þ¸ð¸®¸¦ ÇÒ´çÇÏ¿© ¸®ÅÏ
+	//headnodeì— ëŒ€í•œ ë©”ëª¨ë¦¬ë¥¼ í• ë‹¹í•˜ì—¬ ë¦¬í„´
 	headNode* temp = (headNode*)malloc(sizeof(headNode));
 	temp->first = NULL;
 	return temp;
 }
 
 int freeList(headNode* h) {
-	//h¿Í ¿¬°áµÈ listnode ¸Þ¸ð¸® ÇØÁ¦
-	//headnodeµµ ÇØÁ¦µÇ¾î¾ßÇÔ
+	//hì™€ ì—°ê²°ëœ listnode ë©”ëª¨ë¦¬ í•´ì œ
+	//headnodeë„ í•´ì œë˜ì–´ì•¼í•¨
 	listNode* p = h->first;
 
 	listNode* prev = NULL;
@@ -133,7 +133,7 @@ int freeList(headNode* h) {
 }
 
 int insertFirst(headNode* h, int key) {
-	//listÃ³À½¿¡ key¿¡ ´ëÇÑ ³ëµå ÇÏ³ª¸¦ Ãß°¡
+	//listì²˜ìŒì— keyì— ëŒ€í•œ ë…¸ë“œ í•˜ë‚˜ë¥¼ ì¶”ê°€
 	listNode* node = (listNode*)malloc(sizeof(listNode));
 	node->key = key;
 
@@ -144,158 +144,158 @@ int insertFirst(headNode* h, int key) {
 }
 
 
-//¸®½ºÆ®¸¦ °Ë»öÇÏ¿©, ÀÔ·Â¹ÞÀº keyº¸´Ù Å«°ªÀÌ ³ª¿À´Â ³ëµå ¹Ù·Î ¾Õ¿¡ »ðÀÔ
+//ë¦¬ìŠ¤íŠ¸ë¥¼ ê²€ìƒ‰í•˜ì—¬, ìž…ë ¥ë°›ì€ keyë³´ë‹¤ í°ê°’ì´ ë‚˜ì˜¤ëŠ” ë…¸ë“œ ë°”ë¡œ ì•žì— ì‚½ìž…
 int insertNode(headNode* h, int key) {
 
-	listNode* nnode = (listNode*)malloc(sizeof(listNode));  //nnode ¶ó´Â »õ·Î¿î ³ëµå¸¦ µ¿ÀûÇÒ´ç ÇØÁÜ(ÀÔ·ÂÇÑ °ªÀÌ µé¾î°¥ ³ëµå)
-	nnode->key = key;  //nnode¿¡ ÀÔ·ÂÇÑ Å° °ªÀ» ³ÖÀ½
-	listNode*now;  //now¿Í trail³ëµå¸¦ »ý¼º(À§Ä¡¸¦ ¾Ë±â À§ÇØ¼­)
+	listNode* nnode = (listNode*)malloc(sizeof(listNode));  //nnode ë¼ëŠ” ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ë™ì í• ë‹¹ í•´ì¤Œ(ìž…ë ¥í•œ ê°’ì´ ë“¤ì–´ê°ˆ ë…¸ë“œ)
+	nnode->key = key;  //nnodeì— ìž…ë ¥í•œ í‚¤ ê°’ì„ ë„£ìŒ
+	listNode*now;  //nowì™€ trailë…¸ë“œë¥¼ ìƒì„±(ìœ„ì¹˜ë¥¼ ì•Œê¸° ìœ„í•´ì„œ)
 	listNode*trail;
-	now = h->first;  //now¿Í trail¿¡´Â Çìµå³ëµå ´ÙÀ½ÀÇ ³ëµå¸¦ ³Ö¾îÁÜ
+	now = h->first;  //nowì™€ trailì—ëŠ” í—¤ë“œë…¸ë“œ ë‹¤ìŒì˜ ë…¸ë“œë¥¼ ë„£ì–´ì¤Œ
 	trail = h->first;
-	nnode->link = NULL;  //nnode°¡ °¡¸®Å°´Â ¸µÅ©´Â null°ªÀ¸·Î ¸¸µé¾îÁÜ
+	nnode->link = NULL;  //nnodeê°€ ê°€ë¦¬í‚¤ëŠ” ë§í¬ëŠ” nullê°’ìœ¼ë¡œ ë§Œë“¤ì–´ì¤Œ
 	
-	if (h->first == NULL) {  //¸¸¾à Çìµå³ëµåÀÇ ´ÙÀ½ÀÌ null°ªÀÌ¶ó¸é (Áß°£¿¡ ¾Æ¹«°Íµµ ¾ø´Â°ÍÀÌ±â ¶§¹®¿¡)
-		h->first = nnode;  //Çìµå³ëµå ´ÙÀ½¿¡ nnode¸¦ ³Ö¾îÁÜ
+	if (h->first == NULL) {  //ë§Œì•½ í—¤ë“œë…¸ë“œì˜ ë‹¤ìŒì´ nullê°’ì´ë¼ë©´ (ì¤‘ê°„ì— ì•„ë¬´ê²ƒë„ ì—†ëŠ”ê²ƒì´ê¸° ë•Œë¬¸ì—)
+		h->first = nnode;  //í—¤ë“œë…¸ë“œ ë‹¤ìŒì— nnodeë¥¼ ë„£ì–´ì¤Œ
 		return;
 	}
-	while (now != NULL)  //now ÀÇ °ªÀÌ nullÀÏ¶§±îÁö while¹®ÀÌ ¹Ýº¹µÊ
+	while (now != NULL)  //now ì˜ ê°’ì´ nullì¼ë•Œê¹Œì§€ whileë¬¸ì´ ë°˜ë³µë¨
 	{
-		if (now->key >= key) {  //¸¸¾à ÀÔ·ÂÇÑ key°ªÀÌ now°¡ ÀÖ´Â key°ªº¸´Ù ÀÛ°Å³ª °°À»°æ¿ì
-			if (now == h->first)  //±× Áß¿¡¼­µµ, now °¡ Çìµå³ëµåÀÇ ¹Ù·Î ´ÙÀ½ ³ëµåÀÏ °æ¿ì¿¡
+		if (now->key >= key) {  //ë§Œì•½ ìž…ë ¥í•œ keyê°’ì´ nowê°€ ìžˆëŠ” keyê°’ë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ì„ê²½ìš°
+			if (now == h->first)  //ê·¸ ì¤‘ì—ì„œë„, now ê°€ í—¤ë“œë…¸ë“œì˜ ë°”ë¡œ ë‹¤ìŒ ë…¸ë“œì¼ ê²½ìš°ì—
 			{
-				nnode->link = now;  //nnodeÀÇ ¸µÅ©¸¦ now¿¡ ¿¬°áÇØÁÖ°í
-				h->first = nnode;  //Çìµå³ëµå ´ÙÀ½ÀÇ ³ëµå¸¦ nnode·Î ³Ö¾îÁÜ
+				nnode->link = now;  //nnodeì˜ ë§í¬ë¥¼ nowì— ì—°ê²°í•´ì£¼ê³ 
+				h->first = nnode;  //í—¤ë“œë…¸ë“œ ë‹¤ìŒì˜ ë…¸ë“œë¥¼ nnodeë¡œ ë„£ì–´ì¤Œ
 
 			}
 
-			else /*if (now->key < key)*/  //¸¸¾à ÀÛÁö ¾Ê´Ù¸é, 
+			else /*if (now->key < key)*/  //ë§Œì•½ ìž‘ì§€ ì•Šë‹¤ë©´, 
 			{
-				nnode->link = trail->link;  //nnodeÀÇ ¸µÅ©¸¦ trailÀÌ °¡¸®Å°°í ÀÖ´Â ¸µÅ©·Î ¹Ù²ãÁÖ°í 
-				trail->link = nnode;  //trailÀÇ ¸µÅ©´Â nnode·Î ¿¬°áÇØÁÜ
+				nnode->link = trail->link;  //nnodeì˜ ë§í¬ë¥¼ trailì´ ê°€ë¦¬í‚¤ê³  ìžˆëŠ” ë§í¬ë¡œ ë°”ê¿”ì£¼ê³  
+				trail->link = nnode;  //trailì˜ ë§í¬ëŠ” nnodeë¡œ ì—°ê²°í•´ì¤Œ
 			}
 
 			return;
 
 		}
-			trail = now;  //trail ´ÙÀ½ÀÌ now ÀÎ ¾Ë°í¸®ÁòÀ¸·Î ÁøÇàÇÏ±â ¶§¹®¿¡ trail¿¡´Ù°¡ now°ªÀ» ³Ö¾îÁÜ(trailÀÌ ¾ÕÀ¸·Î ÇÑÄ­ ÀÌµ¿)
-			now = now->link;  //now´Â now°¡ °¡¸®Å°´Â ¸µÅ©·Î ÀÌµ¿ (now°¡ ¾ÕÀ¸·Î ÇÑÄ­ ÀÌµ¿)
+			trail = now;  //trail ë‹¤ìŒì´ now ì¸ ì•Œê³ ë¦¬ì¦˜ìœ¼ë¡œ ì§„í–‰í•˜ê¸° ë•Œë¬¸ì— trailì—ë‹¤ê°€ nowê°’ì„ ë„£ì–´ì¤Œ(trailì´ ì•žìœ¼ë¡œ í•œì¹¸ ì´ë™)
+			now = now->link;  //nowëŠ” nowê°€ ê°€ë¦¬í‚¤ëŠ” ë§í¬ë¡œ ì´ë™ (nowê°€ ì•žìœ¼ë¡œ í•œì¹¸ ì´ë™)
 		
 	} 
-	trail->link = nnode;  //¸Ç¸¶Áö¸·¿¡ »ðÀÔµÇ´Â °æ¿ì (trailÀÇ ¸µÅ©¸¦ nnode¶ó ÇØÁÜ)
+	trail->link = nnode;  //ë§¨ë§ˆì§€ë§‰ì— ì‚½ìž…ë˜ëŠ” ê²½ìš° (trailì˜ ë§í¬ë¥¼ nnodeë¼ í•´ì¤Œ)
 	
 	return 0;
 	
 }
 
-//list¿¡ key¿¡ ´ëÇÑ ³ëµå ÇÏ³ª¸¦ Ãß°¡ 
+//listì— keyì— ëŒ€í•œ ë…¸ë“œ í•˜ë‚˜ë¥¼ ì¶”ê°€ 
 int insertLast(headNode* h, int key) {
 	
 	listNode* n;
 	listNode* lastnode;
-	n = h->first;  //nÀ» hÀÇ ´ÙÀ½ ³ëµå¶ó°í ÁöÁ¤
-	lastnode = (listNode*)malloc(sizeof(listNode));  //lastnode¿¡ µ¿ÀûÇÒ´çÀ» ÇØÁÜ
-	lastnode->link = NULL;  //lastnodeÀÇ ¸µÅ©°¡ nullÀ» °¡¸®Å´
-	lastnode->key = key;  //lastnodeÀÇ key°ª¿¡ key¸¦ ³Ö¾îÁÜ
+	n = h->first;  //nì„ hì˜ ë‹¤ìŒ ë…¸ë“œë¼ê³  ì§€ì •
+	lastnode = (listNode*)malloc(sizeof(listNode));  //lastnodeì— ë™ì í• ë‹¹ì„ í•´ì¤Œ
+	lastnode->link = NULL;  //lastnodeì˜ ë§í¬ê°€ nullì„ ê°€ë¦¬í‚´
+	lastnode->key = key;  //lastnodeì˜ keyê°’ì— keyë¥¼ ë„£ì–´ì¤Œ
 	
-	if (h->first==NULL)  //¸¸¾à hÀÇ ´ÙÀ½ ³ëµå°¡ nullÀÌ¸é
+	if (h->first==NULL)  //ë§Œì•½ hì˜ ë‹¤ìŒ ë…¸ë“œê°€ nullì´ë©´
 	{        
-		h->first = lastnode;  //hÀÇ ´ÙÀ½ ³ëµå¿¡ lastnode³ëµå¸¦ ³Ö¾îÁÜ
+		h->first = lastnode;  //hì˜ ë‹¤ìŒ ë…¸ë“œì— lastnodeë…¸ë“œë¥¼ ë„£ì–´ì¤Œ
 	}
 	
-	while (n->link != NULL) {  //nÀÇ ¸µÅ©°¡ nullÀÌ ¾Æ´Ï¸é
+	while (n->link != NULL) {  //nì˜ ë§í¬ê°€ nullì´ ì•„ë‹ˆë©´
 
-		n = n->link; //nÀÇ °ªÀ» nÀÌ °¡¸®Å°´Â link·Î ¹Ù²ãÁÜ(nullÀÌ ³ª¿Ã¶§±îÁö °è¼Ó ¹Ýº¹ÇØÁÜ)
+		n = n->link; //nì˜ ê°’ì„ nì´ ê°€ë¦¬í‚¤ëŠ” linkë¡œ ë°”ê¿”ì¤Œ(nullì´ ë‚˜ì˜¬ë•Œê¹Œì§€ ê³„ì† ë°˜ë³µí•´ì¤Œ)
 	}
 
-		n->link = lastnode;  //while¹®¿¡¼­ ºüÁ®³ª¿Ô°í, nÀÌ °¡¸®Å°´Â link¿¡´Ù°¡ lastnode¸¦ ³Ö¾îÁÜ
+		n->link = lastnode;  //whileë¬¸ì—ì„œ ë¹ ì ¸ë‚˜ì™”ê³ , nì´ ê°€ë¦¬í‚¤ëŠ” linkì—ë‹¤ê°€ lastnodeë¥¼ ë„£ì–´ì¤Œ
 	
 }
 
-//listÀÇ Ã¹¹øÂ° ³ëµå »èÁ¦  
+//listì˜ ì²«ë²ˆì§¸ ë…¸ë“œ ì‚­ì œ  
 int deleteFirst(headNode* h) {
 
-	listNode* tnode = h->first;  //tnode¸¦ hÀÇ ´ÙÀ½³ëµå·Î ¼³Á¤
-	h->first = tnode->link;  //hÀÇ ´ÙÀ½³ëµå¸¦ tnodeÀÇ ¸µÅ©·Î ¼³Á¤ÇØÁÜ
+	listNode* tnode = h->first;  //tnodeë¥¼ hì˜ ë‹¤ìŒë…¸ë“œë¡œ ì„¤ì •
+	h->first = tnode->link;  //hì˜ ë‹¤ìŒë…¸ë“œë¥¼ tnodeì˜ ë§í¬ë¡œ ì„¤ì •í•´ì¤Œ
 		
 	return 0;
 		}
 
-//list¿¡¼­ key ¿¡ ´ëÇÑ ³ëµå »èÁ¦
+//listì—ì„œ key ì— ëŒ€í•œ ë…¸ë“œ ì‚­ì œ
 int deleteNode(headNode* h, int key) {
 
 
-	if (h->first == NULL) {  //°ø¹é¸®½ºÆ®ÀÏ °æ¿ì
-		printf("ºó ¸®½ºÆ®ÀÔ´Ï´Ù.");
+	if (h->first == NULL) {  //ê³µë°±ë¦¬ìŠ¤íŠ¸ì¼ ê²½ìš°
+		printf("ë¹ˆ ë¦¬ìŠ¤íŠ¸ìž…ë‹ˆë‹¤.");
 		return 0;
 	}
 
 	listNode * ppre;
 	listNode * pnode;
 	ppre = NULL; 
-	pnode = h->first;  //pnode¸¦ Çìµå³ëµåÀÇ ´ÙÀ½À¸·Î ³Ö¾îÁÜ
+	pnode = h->first;  //pnodeë¥¼ í—¤ë“œë…¸ë“œì˜ ë‹¤ìŒìœ¼ë¡œ ë„£ì–´ì¤Œ
 
-	while (h->first != NULL)  //Çìµå³ëµåÀÇ ´ÙÀ½ °ªÀÌ nullÀÏ¶§±îÁö while¹®ÀÌ ½ÇÇà
+	while (h->first != NULL)  //í—¤ë“œë…¸ë“œì˜ ë‹¤ìŒ ê°’ì´ nullì¼ë•Œê¹Œì§€ whileë¬¸ì´ ì‹¤í–‰
 	{
-		if (pnode->key == key)  //¸¸¾à pnodeÀÇ key°¡ ÀÔ·ÂÇÑ key°ª°ú °°À¸¸é 
+		if (pnode->key == key)  //ë§Œì•½ pnodeì˜ keyê°€ ìž…ë ¥í•œ keyê°’ê³¼ ê°™ìœ¼ë©´ 
 		{
-			ppre->link = pnode->link;  //»èÁ¦ÇØÁÜ
+			ppre->link = pnode->link;  //ì‚­ì œí•´ì¤Œ
 			break;
 		}
-		else  //±×·¸Áö ¾ÊÀ¸¸é
+		else  //ê·¸ë ‡ì§€ ì•Šìœ¼ë©´
 		{
-			ppre = pnode;  //ÀÚ¸®¸¦ ¿Å°ÜÁÜ
+			ppre = pnode;  //ìžë¦¬ë¥¼ ì˜®ê²¨ì¤Œ
 		}
 		pnode = pnode->link; 
 	}
 }
 
-//listÀÇ ¸¶Áö¸· ³ëµå »èÁ¦  
+//listì˜ ë§ˆì§€ë§‰ ë…¸ë“œ ì‚­ì œ  
 int deleteLast(headNode* h) {
 
 	listNode*dlastnode;
 	listNode*dn;
 
-	if (h->first == NULL)   //¸¸¾à hÀÇ ´ÙÀ½ ³ëµå°¡ nullÀÌ¸é ±×´ë·Î ³¡³¿
+	if (h->first == NULL)   //ë§Œì•½ hì˜ ë‹¤ìŒ ë…¸ë“œê°€ nullì´ë©´ ê·¸ëŒ€ë¡œ ëëƒ„
 		return;
 
-	if(h->first->link == NULL) {  //hÀÇ ´ÙÀ½³ëµåÀÇ ¸µÅ©°¡ nullÀÌ¸é
-		h->first = NULL;  //hÀÇ first³ëµå¸¦ null·Î ¿¬°áÇØÁÜ (±× »çÀÌ »èÁ¦)
-		free(h->first); //³ëµå ¸Þ¸ð¸® ÇØÁ¦
+	if(h->first->link == NULL) {  //hì˜ ë‹¤ìŒë…¸ë“œì˜ ë§í¬ê°€ nullì´ë©´
+		h->first = NULL;  //hì˜ firstë…¸ë“œë¥¼ nullë¡œ ì—°ê²°í•´ì¤Œ (ê·¸ ì‚¬ì´ ì‚­ì œ)
+		free(h->first); //ë…¸ë“œ ë©”ëª¨ë¦¬ í•´ì œ
 		return;
 	}
-	else {  //±×·¸Áö ¾ÊÀ¸¸é
-		dn = h->first; // dnÀ» hÀÇ ´ÙÀ½ ³ëµå·Î ³Ö¾îÁÖ°í
-		dlastnode = h->first->link;  //dlastnode¸¦ dnÀÌ °¡¸®Å°´Â ¸µÅ©·Î ¼³Á¤ÇØÁÜ
-		while (dlastnode->link != NULL) {  //¸¸¾à dlastnodeÀÇ ¸µÅ©°¡ nullÀÌ ¾Æ´Ò°æ¿ì
-			dn = dlastnode; //dn¿¡ dlastnode¸¦ ³Ö¾îÁÜ (µÚ·Î ÀÌµ¿ÇÏ´Â °úÁ¤)
-			dlastnode = dlastnode->link;  //dlastnode¸¦ dlastnode°¡ °¡¸®Å°´Â ¸µÅ©·Î ³Ö¾îÁÜ
+	else {  //ê·¸ë ‡ì§€ ì•Šìœ¼ë©´
+		dn = h->first; // dnì„ hì˜ ë‹¤ìŒ ë…¸ë“œë¡œ ë„£ì–´ì£¼ê³ 
+		dlastnode = h->first->link;  //dlastnodeë¥¼ dnì´ ê°€ë¦¬í‚¤ëŠ” ë§í¬ë¡œ ì„¤ì •í•´ì¤Œ
+		while (dlastnode->link != NULL) {  //ë§Œì•½ dlastnodeì˜ ë§í¬ê°€ nullì´ ì•„ë‹ê²½ìš°
+			dn = dlastnode; //dnì— dlastnodeë¥¼ ë„£ì–´ì¤Œ (ë’¤ë¡œ ì´ë™í•˜ëŠ” ê³¼ì •)
+			dlastnode = dlastnode->link;  //dlastnodeë¥¼ dlastnodeê°€ ê°€ë¦¬í‚¤ëŠ” ë§í¬ë¡œ ë„£ì–´ì¤Œ
 		}
 		 
 	}
-	free(dlastnode); //³ëµå ¸Þ¸ð¸® ÇØÁ¦
-	dn->link = NULL;  //dnÀÇ ¸µÅ©´Â nullÀÌ´Ù (dlastnode´Â »èÁ¦µÊ)
+	free(dlastnode); //ë…¸ë“œ ë©”ëª¨ë¦¬ í•´ì œ
+	dn->link = NULL;  //dnì˜ ë§í¬ëŠ” nullì´ë‹¤ (dlastnodeëŠ” ì‚­ì œë¨)
 }
 
-//¸®½ºÆ®ÀÇ ¸µÅ©¸¦ ¿ª¼øÀ¸·Î Àç¹èÄ¡ 
+//ë¦¬ìŠ¤íŠ¸ì˜ ë§í¬ë¥¼ ì—­ìˆœìœ¼ë¡œ ìž¬ë°°ì¹˜ 
 int invertList(headNode* h) {
 
 	
-	listNode* blank; //ÀÓ½ÃÀúÀå
-	listNode* result; //°á°ú¸¦ ÀúÀå
-	listNode* t; //head À§Ä¡ ³ªÅ¸³»´Â Æ÷ÀÎÅÍ
+	listNode* blank; //ìž„ì‹œì €ìž¥
+	listNode* result; //ê²°ê³¼ë¥¼ ì €ìž¥
+	listNode* t; //head ìœ„ì¹˜ ë‚˜íƒ€ë‚´ëŠ” í¬ì¸í„°
 
-	t = h->first;  //º¯¼öµé ÃÊ±âÈ­
+	t = h->first;  //ë³€ìˆ˜ë“¤ ì´ˆê¸°í™”
 	blank = NULL;  
 	result = NULL;
 
-	//³ëµåÀÇ ¿¬°áÀ» ¹Ý´ë·Î ¹Ù²Ù±â
+	//ë…¸ë“œì˜ ì—°ê²°ì„ ë°˜ëŒ€ë¡œ ë°”ê¾¸ê¸°
 	while (t!= NULL)
 	{
-		blank = result; //blankÀÇ Æ÷ÀÎÅÍ¸¦ result·Î ³Ö¾îÁÜ
-		result = t; //result¸¦ p·Î ³Ö¾îÁÜ
-		t = t->link;  //Æ÷ÀÎÅÍÀÇ ¸Ç ¾Õ ³ëµå¿¡ ÀÖ´ø p¸¦ ´ÙÀ½³ëµå·Î ¿Å°ÜÁÜ
-		result->link = blank;  //¸Ç ¾Õ ³ëµåÀÇ ¸µÅ©¸¦ µÚÁýÀº blank¿¡ ³Ö¾îÁÜ
+		blank = result; //blankì˜ í¬ì¸í„°ë¥¼ resultë¡œ ë„£ì–´ì¤Œ
+		result = t; //resultë¥¼ të¡œ ë„£ì–´ì¤Œ
+		t = t->link;  //í¬ì¸í„°ì˜ ë§¨ ì•ž ë…¸ë“œì— ìžˆë˜ të¥¼ ë‹¤ìŒë…¸ë“œë¡œ ì˜®ê²¨ì¤Œ
+		result->link = blank;  //ë§¨ ì•ž ë…¸ë“œì˜ ë§í¬ë¥¼ ë’¤ì§‘ì€ blankì— ë„£ì–´ì¤Œ
 	}
 
 	h->first = result;
